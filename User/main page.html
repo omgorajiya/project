@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="stylesheet" href="main2.css">
+  <title>Laptop Dashboard</title>
+   
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="main-header">
+    <div class="nav-container">
+      <div class="logo">Rebulic of gamers</div>
+      <nav class="main-nav">
+        <ul>
+          <li><a href="../all brand codes/tuf code.html">TUF</a></li>
+          <li><a href="../all brand codes/rog code.html">ROG</a></li>
+          <li><a href="../all brand codes/legion code.html">legion</a></li>
+          <li><a href="../all brand codes/loq code.html">LOQ</a></li>
+          <li><a href="../all brand codes/predator code.html">predator</a></li>
+          <li><a href="../all brand codes/victus code.html">victus</a></li>
+        </ul>
+      </nav>
+      <div class="user-menu">
+        <span>Admin</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- Slider Section -->
+  <section class="slider-wrapper">
+    <div class="slider-container">
+      <div class="slider">
+
+        <div class="slide"><a href="../all brand codes/rog code.html"><img src="images/rog/1-image.png" alt="Laptop 1"></div></a>
+        <div class="slide"><a href="../all brand codes/predator code.html"><img src="images/predator/1-image.png" alt="Laptop 2"></div></a>
+        <div class="slide"><a href="../all brand codes/tuf code.html"><img src="images/tuf/1-image.png" alt="Laptop 3"></div></a>
+        <div class="slide"><a href="../all brand codes/rog code.html"><img src="images/rog/2-image.png" alt="Laptop 1"></div></a>
+        <div class="slide"><a href="../all brand codes/predator code.html"><img src="images/predator/2-image.png" alt="Laptop 2"></div></a>
+        <div class="slide"><a href="../all brand codes/tuf code.html"><img src="images/tuf/2-image.png" alt="Laptop 3"></div></a>
+        <div class="slide"><a href="../all brand codes/rog code.html"><img src="images/rog/3-image.png" alt="Laptop 1"></div></a>
+        <div class="slide"><a href="../all brand codes/predator code.html"><img src="images/predator/3-image.png" alt="Laptop 2"></div></a>
+        <div class="slide"><a href="../all brand codes/tuf code.html"><img src="images/tuf/3-image.png" alt="Laptop 3"></div></a>
+
+      </div>
+      <button class="btn prev">&#10094;</button>
+      <button class="btn next">&#10095;</button>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-container">
+      <div class="footer-column">
+        <h4>LaptopShop</h4>
+        <p>High-performance laptops for professionals and gamers.</p>
+        <div class="social-icons">
+          <a href="#">&#x1F5E8;</a>
+          <a href="#">&#x1F426;</a>
+          <a href="#">&#x1F33F;</a>
+        </div>
+      </div>
+      <div class="footer-column">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="#">Home</a></li>
+          <li><a href="#">About Us</a></li>
+        </ul>
+      </div>
+      <div class="footer-column">
+        <h4>Contact</h4>
+        <ul>
+          <li>Email: support@laptopshop.com</li>
+          <li>Phone: +1 234 567 890</li>
+          <li>Location: Silicon Valley, CA</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      &copy; 2025 LaptopShop. All rights reserved.
+    </div>
+  </footer>
+
+  <!-- JavaScript -->
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const slider = document.querySelector(".slider");
+      const slides = document.querySelectorAll(".slide");
+      const prevBtn = document.querySelector(".prev");
+      const nextBtn = document.querySelector(".next");
+      let index = 0;
+
+      const firstClone = slides[0].cloneNode(true);
+      slider.appendChild(firstClone);
+
+      const totalSlides = slides.length + 1;
+
+      function showSlide(i) {
+        slider.style.transition = "transform 0.5s ease-in-out";
+        slider.style.transform = `translateX(-${i * 100}%)`;
+      }
+
+      function nextSlide() {
+        index++;
+        showSlide(index);
+        if (index === totalSlides - 1) {
+          setTimeout(() => {
+            slider.style.transition = "none";
+            index = 0;
+            slider.style.transform = `translateX(0%)`;
+          }, 500);
+        }
+      }
+
+      function prevSlide() {
+        index = (index - 1 + (totalSlides - 1)) % (totalSlides - 1);
+        showSlide(index);
+      }
+
+      nextBtn.addEventListener("click", nextSlide);
+      prevBtn.addEventListener("click", prevSlide);
+
+      setInterval(() => {
+        nextSlide();
+      }, 3000);
+    });
+  </script>
+
+</body>
+</html>
