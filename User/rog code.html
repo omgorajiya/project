@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ASUS ROG Lineup 2025</title>
+  <link rel="stylesheet" href="../css code/styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&family=Roboto&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  
+
+  <div class="filters">
+    <h1 class="filter-heading">You can apply filter too!</h1>
+
+    <div class="filters">
+      <label for="cpu">CPU:</label>
+      <select id="cpu">
+        <option value="">All</option>
+        <option value="i7-13700H">i7-13700H</option>
+        <option value="i9-13900H">i9-13900H</option>
+        <option value="i9-13900HX">i9-13900HX</option>
+        <option value="Ryzen 9 7945HX">Ryzen 9 7945HX</option>
+      </select>
+  
+      <label for="gpu">GPU:</label>
+      <select id="gpu">
+        <option value="">All</option>
+        <option value="RTX 4060">RTX 4060</option>
+        <option value="RTX 4070">RTX 4070</option>
+        <option value="RTX 4080">RTX 4080</option>
+        <option value="RTX 4090">RTX 4090</option>
+      </select>
+  
+      <label for="ram">RAM:</label>
+      <select id="ram">
+        <option value="">All</option>
+        <option value="16GB">16GB</option>
+        <option value="32GB">32GB</option>
+      </select>
+    </div>
+
+    <div class="reset-wrapper">
+      <button id="resetFilters">Reset Filters</button>
+    </div>
+
+  </div> <!-- end of .filters -->
+
+  
+  </div>
+    
+    <div class="container">
+     
+    </div>
+  
+    <script>
+      const cpuFilter = document.getElementById("cpu");
+      const gpuFilter = document.getElementById("gpu");
+      const ramFilter = document.getElementById("ram");
+      const laptops = document.querySelectorAll(".laptop-card");
+    
+      // Disable GPU and RAM initially
+      gpuFilter.disabled = true;
+      ramFilter.disabled = true;
+    
+      function filterLaptops() {
+        const selectedCPU = cpuFilter.value;
+        const selectedGPU = gpuFilter.value;
+        const selectedRAM = ramFilter.value;
+    
+        laptops.forEach(laptop => {
+          const cpuList = laptop.dataset.cpu?.split(" ") || [];
+          const gpuList = laptop.dataset.gpu?.split(" ") || [];
+          const ramList = laptop.dataset.ram?.split(" ") || [];
+    
+          const cpuMatch = !selectedCPU || cpuList.includes(selectedCPU);
+          const gpuMatch = !selectedGPU || gpuList.includes(selectedGPU);
+          const ramMatch = !selectedRAM || ramList.includes(selectedRAM);
+    
+          laptop.style.display = (cpuMatch && gpuMatch && ramMatch) ? "flex" : "none";
+        });
+      }
+    
+      // Step-by-step enabling logic
+      cpuFilter.addEventListener("change", () => {
+        if (cpuFilter.value) {
+          gpuFilter.disabled = false;
+        } else {
+          gpuFilter.disabled = true;
+          ramFilter.disabled = true;
+          gpuFilter.value = "";
+          ramFilter.value = "";
+        }
+        filterLaptops();
+      });
+    
+      gpuFilter.addEventListener("change", () => {
+        if (gpuFilter.value) {
+          ramFilter.disabled = false;
+        } else {
+          ramFilter.disabled = true;
+          ramFilter.value = "";
+        }
+        filterLaptops();
+      });
+    
+      ramFilter.addEventListener("change", filterLaptops);
+
+      document.getElementById("resetFilters").addEventListener("click", () => {
+    cpuFilter.value = "";
+    gpuFilter.value = "";
+    ramFilter.value = "";
+
+    gpuFilter.disabled = true;
+    ramFilter.disabled = true;
+
+    filterLaptops(); // Refresh the filtered list
+  });
+
+    </script>  
+
+  <div class="container">
+
+    <article class="laptop-card">
+      <img src="images/rog/1-image.png" alt="ASUS ROG Strix Scar 15 (2025)">
+      <div class="details">
+        <h2>1. ASUS ROG Strix Scar 15 (2025)</h2>
+        <ul>
+          <li><strong>CPU:</strong> AMD Ryzen 9 7945HX / Intel Core i9-13900H</li>
+          <li><strong>GPU:</strong> NVIDIA GeForce RTX 4080 / 4090</li>
+          <li><strong>RAM:</strong> 32GB DDR5</li>
+          <li><strong>Storage:</strong> 1TB SSD</li>
+          <li><strong>Display:</strong> 15.6-inch, 240Hz Full HD or 165Hz 1440p</li>
+          <li><strong>Key Features:</strong> Advanced cooling system, customizable RGB keyboard, high refresh rate for competitive gaming</li>
+          <li><strong>Best For:</strong> Hardcore gamers and streamers seeking top-tier performance</li>
+        </ul>
+      </div>
+    </article>
+
+    <article class="laptop-card">
+      <img src="images/rog/2-image.png" alt="ASUS ROG Zephyrus G14 (2025)">
+      <div class="details">
+        <h2>2. ASUS ROG Zephyrus G14 (2025)</h2>
+        <ul>
+          <li><strong>CPU:</strong> AMD Ryzen 9 7945HX / Ryzen 9 7845HS</li>
+          <li><strong>GPU:</strong> NVIDIA GeForce RTX 4070 / 4060</li>
+          <li><strong>RAM:</strong> 16GB / 32GB DDR5</li>
+          <li><strong>Storage:</strong> 512GB / 1TB SSD</li>
+          <li><strong>Display:</strong> 14-inch, 120Hz QHD or 165Hz Full HD</li>
+          <li><strong>Key Features:</strong> Ultra-portable, AniMe Matrix LED, great performance for the size</li>
+          <li><strong>Best For:</strong> Gamers needing portability with power</li>
+        </ul>
+      </div>
+    </article>
+
+    <article class="laptop-card">
+      <img src="images/rog/3-image.png" alt="ASUS ROG Strix Scar 17 (2025)">
+      <div class="details">
+        <h2>3. ASUS ROG Strix Scar 17 (2025)</h2>
+        <ul>
+          <li><strong>CPU:</strong> Intel Core i9-13900HX / AMD Ryzen 9 7945HX</li>
+          <li><strong>GPU:</strong> NVIDIA GeForce RTX 4070 / 4080</li>
+          <li><strong>RAM:</strong> 32GB DDR5</li>
+          <li><strong>Storage:</strong> 1TB SSD</li>
+          <li><strong>Display:</strong> 17.3-inch, 165Hz Full HD or 1440p</li>
+          <li><strong>Key Features:</strong> Large screen, strong cooling, immersive gaming</li>
+          <li><strong>Best For:</strong> Gamers who prefer larger screens</li>
+        </ul>
+      </div>
+    </article>
+
+    <article class="laptop-card">
+      <img src="images/rog/4-image.png" alt="ASUS ROG Flow Z13 (2025)">
+      <div class="details">
+        <h2>4. ASUS ROG Flow Z13 (2025)</h2>
+        <ul>
+          <li><strong>CPU:</strong> Intel Core i7-13700H / i9-13900H</li>
+          <li><strong>GPU:</strong> NVIDIA GeForce RTX 4060 / 4070 (with external GPU support)</li>
+          <li><strong>RAM:</strong> 16GB / 32GB LPDDR5</li>
+          <li><strong>Storage:</strong> 512GB / 1TB SSD</li>
+          <li><strong>Display:</strong> 13.4-inch, 120Hz Full HD or 4K</li>
+          <li><strong>Key Features:</strong> 2-in-1 convertible, touchscreen, detachable keyboard</li>
+          <li><strong>Best For:</strong> Gamers seeking versatility and portability</li>
+        </ul>
+      </div>
+    </article>
+
+    <article class="laptop-card">
+      <img src="images/rog/5-image.png" alt="ASUS ROG Strix G15 (2025)">
+      <div class="details">
+        <h2>5. ASUS ROG Strix G15 (2025)</h2>
+        <ul>
+          <li><strong>CPU:</strong> AMD Ryzen 9 7945HX / Intel Core i7-13700H</li>
+          <li><strong>GPU:</strong> NVIDIA GeForce RTX 4060 / 4070</li>
+          <li><strong>RAM:</strong> 16GB / 32GB DDR5</li>
+          <li><strong>Storage:</strong> 512GB / 1TB SSD</li>
+          <li><strong>Display:</strong> 15.6-inch, 165Hz Full HD</li>
+          <li><strong>Key Features:</strong> Sleek design, long battery life, solid gaming performance</li>
+          <li><strong>Best For:</strong> Balanced gaming experience at an affordable price</li>
+        </ul>
+      </div>
+    </article>
+
+    <article class="laptop-card">
+      <img src="images/rog/6-image.png" alt="ASUS ROG Strix G17 (2025)">
+      <div class="details">
+        <h2>6. ASUS ROG Strix G17 (2025)</h2>
+        <ul>
+          <li><strong>CPU:</strong> Intel Core i7-13700H / i9-13900H / AMD Ryzen 9 7945HX</li>
+          <li><strong>GPU:</strong> NVIDIA GeForce RTX 4070 / 4080</li>
+          <li><strong>RAM:</strong> 16GB / 32GB DDR5</li>
+          <li><strong>Storage:</strong> 512GB / 1TB SSD</li>
+          <li><strong>Display:</strong> 17.3-inch, 144Hz Full HD or 165Hz 1440p</li>
+          <li><strong>Key Features:</strong> Great cooling, strong GPU performance, large screen</li>
+          <li><strong>Best For:</strong> Gamers wanting big-screen power</li>
+        </ul>
+      </div>
+    </article>
+
+    <article class="laptop-card">
+      <img src="images/rog/7-image.png" alt="ASUS ROG Zephyrus M16 (2025)">
+      <div class="details">
+        <h2>7. ASUS ROG Zephyrus M16 (2025)</h2>
+        <ul>
+          <li><strong>CPU:</strong> Intel Core i9-13900H</li>
+          <li><strong>GPU:</strong> NVIDIA GeForce RTX 4070 / 4080</li>
+          <li><strong>RAM:</strong> 16GB / 32GB DDR5</li>
+          <li><strong>Storage:</strong> 512GB / 1TB SSD</li>
+          <li><strong>Display:</strong> 16-inch, 165Hz QHD</li>
+          <li><strong>Key Features:</strong> Slim and light, powerful specs, long battery</li>
+          <li><strong>Best For:</strong> Gamers needing high-end portability</li>
+        </ul>
+      </div>
+    </article>
+
+    <article class="laptop-card">
+      <img src="images/rog/8-image.png" alt="ASUS ROG Flow X13 (2025)">
+      <div class="details">
+        <h2>8. ASUS ROG Flow X13 (2025)</h2>
+        <ul>
+          <li><strong>CPU:</strong> AMD Ryzen 9 7945HX / Intel Core i7-13700H</li>
+          <li><strong>GPU:</strong> NVIDIA GeForce RTX 4050 / 4060</li>
+          <li><strong>RAM:</strong> 16GB / 32GB LPDDR5</li>
+          <li><strong>Storage:</strong> 512GB / 1TB SSD</li>
+          <li><strong>Display:</strong> 13.4-inch, 120Hz Full HD or 4K</li>
+          <li><strong>Key Features:</strong> Convertible, ultra-portable, external GPU support</li>
+          <li><strong>Best For:</strong> Gamers seeking a flexible, lightweight option</li>
+        </ul>
+      </div>
+    </article>
+
+    <article class="laptop-card">
+      <img src="images/rog/9-image.png" alt="ASUS ROG Strix SCAR 16 (2025)">
+      <div class="details">
+        <h2>9. ASUS ROG Strix SCAR 16 (2025)</h2>
+        <ul>
+          <li><strong>CPU:</strong> Intel Core i9-13900HX / AMD Ryzen 9 7945HX</li>
+          <li><strong>GPU:</strong> NVIDIA GeForce RTX 4080 / 4090</li>
+          <li><strong>RAM:</strong> 32GB DDR5</li>
+          <li><strong>Storage:</strong> 1TB SSD</li>
+          <li><strong>Display:</strong> 16-inch, 240Hz Full HD or 165Hz QHD</li>
+          <li><strong>Key Features:</strong> Premium design, elite performance, fast refresh visuals</li>
+          <li><strong>Best For:</strong> Gamers & creators needing peak performance</li>
+        </ul>
+      </div>
+    </article>
+
+  </div>
+</body>
+</html>
