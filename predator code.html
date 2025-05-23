@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Acer Predator Lineup 2025</title>
+  <link rel="stylesheet" href="../css code/styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&family=Roboto&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+  <div class="filters">
+    <h1 class="filter-heading">You can apply filter too!</h1>
+
+    <div class="filters">
+      <label for="cpu">CPU:</label>
+      <select id="cpu">
+        <option value="">All</option>
+        <option value="i7-13700H">i7-13700H</option>
+        <option value="i9-13900H">i9-13900H</option>
+        <option value="i9-13900HX">i9-13900HX</option>
+        <option value="Ryzen 9 7945HX">Ryzen 9 7945HX</option>
+      </select>
+  
+      <label for="gpu">GPU:</label>
+      <select id="gpu">
+        <option value="">All</option>
+        <option value="RTX 4060">RTX 4060</option>
+        <option value="RTX 4070">RTX 4070</option>
+        <option value="RTX 4080">RTX 4080</option>
+        <option value="RTX 4090">RTX 4090</option>
+      </select>
+  
+      <label for="ram">RAM:</label>
+      <select id="ram">
+        <option value="">All</option>
+        <option value="16GB">16GB</option>
+        <option value="32GB">32GB</option>
+      </select>
+    </div>
+
+    <div class="reset-wrapper">
+      <button id="resetFilters">Reset Filters</button>
+    </div>
+
+  </div> <!-- end of .filters -->
+
+  
+  </div>
+    
+    <div class="container">
+     
+    </div>
+  
+    <script>
+      const cpuFilter = document.getElementById("cpu");
+      const gpuFilter = document.getElementById("gpu");
+      const ramFilter = document.getElementById("ram");
+      const laptops = document.querySelectorAll(".laptop-card");
+    
+      // Disable GPU and RAM initially
+      gpuFilter.disabled = true;
+      ramFilter.disabled = true;
+    
+      function filterLaptops() {
+        const selectedCPU = cpuFilter.value;
+        const selectedGPU = gpuFilter.value;
+        const selectedRAM = ramFilter.value;
+    
+        laptops.forEach(laptop => {
+          const cpuList = laptop.dataset.cpu?.split(" ") || [];
+          const gpuList = laptop.dataset.gpu?.split(" ") || [];
+          const ramList = laptop.dataset.ram?.split(" ") || [];
+    
+          const cpuMatch = !selectedCPU || cpuList.includes(selectedCPU);
+          const gpuMatch = !selectedGPU || gpuList.includes(selectedGPU);
+          const ramMatch = !selectedRAM || ramList.includes(selectedRAM);
+    
+          laptop.style.display = (cpuMatch && gpuMatch && ramMatch) ? "flex" : "none";
+        });
+      }
+    
+      // Step-by-step enabling logic
+      cpuFilter.addEventListener("change", () => {
+        if (cpuFilter.value) {
+          gpuFilter.disabled = false;
+        } else {
+          gpuFilter.disabled = true;
+          ramFilter.disabled = true;
+          gpuFilter.value = "";
+          ramFilter.value = "";
+        }
+        filterLaptops();
+      });
+    
+      gpuFilter.addEventListener("change", () => {
+        if (gpuFilter.value) {
+          ramFilter.disabled = false;
+        } else {
+          ramFilter.disabled = true;
+          ramFilter.value = "";
+        }
+        filterLaptops();
+      });
+    
+      ramFilter.addEventListener("change", filterLaptops);
+
+      document.getElementById("resetFilters").addEventListener("click", () => {
+    cpuFilter.value = "";
+    gpuFilter.value = "";
+    ramFilter.value = "";
+
+    gpuFilter.disabled = true;
+    ramFilter.disabled = true;
+
+    filterLaptops(); // Refresh the filtered list
+  });
+
+    </script>
+
+
+    
+  <div class="container">
+
+    <article class="laptop-card" data-cpu="i7-13700H i9-13900H" data-gpu="RTX 4070 RTX 4080" data-ram="16GB 32GB">
+      <!-- Helios 16 -->
+      
+      <img src="images/predator/1-image.png" alt="Acer Predator Helios 16">
+      <div class="details">
+        <h2>1. Acer Predator Helios 16 (2025)</h2>
+        <ul>
+          <li><strong>CPU:</strong> Intel Core i7-13700H / i9-13900H</li>
+          <li><strong>GPU:</strong> NVIDIA GeForce RTX 4070 / 4080</li>
+          <li><strong>RAM:</strong> 16GB / 32GB DDR5</li>
+          <li><strong>Storage:</strong> 512GB / 1TB SSD</li>
+          <li><strong>Display:</strong> 16", 165Hz 2560x1600 or 240Hz FHD</li>
+          <li><strong>Key Features:</strong> Advanced thermal system, RGB keyboard</li>
+          <li><strong>Best For:</strong> High-performance gaming in a sleek design</li>
+        </ul>
+      </div>
+    </article>
+
+    <article class="laptop-card" data-cpu="i7-13700H" data-gpu="RTX 4060 RTX 4070" data-ram="16GB 32GB">
+      <!-- Helios 300 -->
+      
+      <img src="images/predator/2-image.png" alt="Acer Predator Helios 300">
+      <div class="details">
+        <h2>2. Acer Predator Helios 300 (2025)</h2>
+        <ul>
+          <li><strong>CPU:</strong> Intel Core i7-13700H</li>
+          <li><strong>GPU:</strong> NVIDIA GeForce RTX 4060 / 4070</li>
+          <li><strong>RAM:</strong> 16GB / 32GB DDR5</li>
+          <li><strong>Storage:</strong> 512GB / 1TB SSD</li>
+          <li><strong>Display:</strong> 15.6", 144Hz or 165Hz FHD</li>
+          <li><strong>Key Features:</strong> RGB keyboard, great price-to-performance</li>
+          <li><strong>Best For:</strong> Mid-range gamers</li>
+        </ul>
+      </div>
+    </article>
+
+    <article class="laptop-card" data-cpu="i9-13900H" data-gpu="RTX 4070 RTX 4080" data-ram="16GB 32GB">
+      <!-- Triton 500 SE -->
+      
+      <img src="images/predator/3-image.png" alt="Acer Predator Triton 500 SE">
+      <div class="details">
+        <h2>3. Acer Predator Triton 500 SE (2025)</h2>
+        <ul>
+          <li><strong>CPU:</strong> Intel Core i9-13900H</li>
+          <li><strong>GPU:</strong> NVIDIA GeForce RTX 4070 / 4080</li>
+          <li><strong>RAM:</strong> 16GB / 32GB DDR5</li>
+          <li><strong>Storage:</strong> 1TB SSD</li>
+          <li><strong>Display:</strong> 16", 240Hz QHD</li>
+          <li><strong>Key Features:</strong> Slim build, long battery</li>
+          <li><strong>Best For:</strong> Gaming and content creation</li>
+        </ul>
+      </div>
+    </article>
+
+    <article class="laptop-card" data-cpu="i7-13700H i9-13900H" data-gpu="RTX 4070 RTX 4080" data-ram="16GB 32GB">
+      <!-- Triton 500 -->
+      
+      <img src="images/predator/4-image.png" alt="Acer Predator Triton 500">
+      <div class="details">
+        <h2>4. Acer Predator Triton 500 (2025)</h2>
+        <ul>
+          <li><strong>CPU:</strong> Intel Core i7-13700H / i9-13900H</li>
+          <li><strong>GPU:</strong> NVIDIA GeForce RTX 4070 / 4080</li>
+          <li><strong>RAM:</strong> 16GB / 32GB DDR5</li>
+          <li><strong>Storage:</strong> 512GB / 1TB SSD</li>
+          <li><strong>Display:</strong> 15.6", 240Hz FHD or 165Hz 1440p</li>
+          <li><strong>Key Features:</strong> Ultra-portable with powerful cooling</li>
+          <li><strong>Best For:</strong> Gamers on the go</li>
+        </ul>
+      </div>
+    </article>
+
+    <article class="laptop-card" data-cpu="i7-13700H i9-13900HX" data-gpu="RTX 4080 RTX 4090" data-ram="32GB">
+      <!-- Helios 18 -->
+      
+      <img src="images/predator/5-image.png" alt="Acer Predator Helios 18">
+      <div class="details">
+        <h2>5. Acer Predator Helios 18 (2025)</h2>
+        <ul>
+          <li><strong>CPU:</strong> Intel Core i7-13700H / i9-13900HX</li>
+          <li><strong>GPU:</strong> NVIDIA GeForce RTX 4080 / 4090</li>
+          <li><strong>RAM:</strong> 32GB DDR5</li>
+          <li><strong>Storage:</strong> 1TB SSD</li>
+          <li><strong>Display:</strong> 18", 165Hz 2560x1600</li>
+          <li><strong>Key Features:</strong> Massive display, top-tier cooling</li>
+          <li><strong>Best For:</strong> Immersive big-screen gaming</li>
+        </ul>
+      </div>
+    </article>
+
+    <article class="laptop-card" data-cpu="i9-13900H Ryzen 9 7945HX" data-gpu="RTX 4080 RTX 4090" data-ram="32GB">
+      <!-- Helios 500 -->
+      
+      <img src="images/predator/6-image.png" alt="Acer Predator Helios 500">
+      <div class="details">
+        <h2>6. Acer Predator Helios 500 (2025)</h2>
+        <ul>
+          <li><strong>CPU:</strong> Intel Core i9-13900H / AMD Ryzen 9 7945HX</li>
+          <li><strong>GPU:</strong> NVIDIA GeForce RTX 4080 / 4090</li>
+          <li><strong>RAM:</strong> 32GB DDR5</li>
+          <li><strong>Storage:</strong> 1TB SSD</li>
+          <li><strong>Display:</strong> 17.3", 120Hz 4K or 165Hz FHD</li>
+          <li><strong>Key Features:</strong> RGB lighting, powerful performance</li>
+          <li><strong>Best For:</strong> Hardcore gamers and creators</li>
+        </ul>
+      </div>
+    </article>
+
+    <article class="laptop-card" data-cpu="i7-13700H" data-gpu="RTX 4060 RTX 4070" data-ram="16GB">
+      <!-- Triton 500 SE (i7) -->
+      
+      <img src="images/predator/7-image.png" alt="Acer Predator Triton 500 SE i7">
+      <div class="details">
+        <h2>7. Acer Predator Triton 500 SE (Intel i7, 2025)</h2>
+        <ul>
+          <li><strong>CPU:</strong> Intel Core i7-13700H</li>
+          <li><strong>GPU:</strong> NVIDIA GeForce RTX 4060 / 4070</li>
+          <li><strong>RAM:</strong> 16GB DDR5</li>
+          <li><strong>Storage:</strong> 512GB SSD</li>
+          <li><strong>Display:</strong> 16", 165Hz QHD</li>
+          <li><strong>Key Features:</strong> Quiet operation, sleek design</li>
+          <li><strong>Best For:</strong> Portability with power</li>
+        </ul>
+      </div>
+    </article>
+
+    <article class="laptop-card" data-cpu="i7-13700H" data-gpu="RTX 4070" data-ram="16GB 32GB">
+      <!-- Helios 300 SpatialLabs -->
+      
+      <img src="images/predator/8-image.png" alt="Acer Predator Helios 300 SpatialLabs">
+      <div class="details">
+        <h2>8. Acer Predator Helios 300 SpatialLabs Edition (2025)</h2>
+        <ul>
+          <li><strong>CPU:</strong> Intel Core i7-13700H</li>
+          <li><strong>GPU:</strong> NVIDIA GeForce RTX 4070</li>
+          <li><strong>RAM:</strong> 16GB / 32GB DDR5</li>
+          <li><strong>Storage:</strong> 1TB SSD</li>
+          <li><strong>Display:</strong> 15.6", 4K, 120Hz, 3D SpatialLabs</li>
+          <li><strong>Key Features:</strong> Glasses-free 3D gaming</li>
+          <li><strong>Best For:</strong> Developers and 3D creators</li>
+        </ul>
+      </div>
+    </article>
+
+    <article class="laptop-card" data-cpu="i7-13700H i9-13900H" data-gpu="RTX 4060 RTX 4070" data-ram="16GB 32GB">
+      <!-- Helios 15 -->
+      
+      <img src="images/predator/9-image.png" alt="Acer Predator Helios 15">
+      <div class="details">
+        <h2>9. Acer Predator Helios 15 (2025)</h2>
+        <ul>
+          <li><strong>CPU:</strong> Intel Core i7-13700H / i9-13900H</li>
+          <li><strong>GPU:</strong> NVIDIA GeForce RTX 4060 / 4070</li>
+          <li><strong>RAM:</strong> 16GB / 32GB DDR5</li>
+          <li><strong>Storage:</strong> 512GB / 1TB SSD</li>
+          <li><strong>Display:</strong> 15.6", 165Hz FHD</li>
+          <li><strong>Key Features:</strong> Sleek design, great thermal system</li>
+          <li><strong>Best For:</strong> Balanced gaming with style</li>
+        </ul>
+      </div>
+    </article>
+
+  </div>
+
+</body>
+</html>

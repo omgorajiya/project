@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ASUS TUF Lineup 2025</title>
+  <link rel="stylesheet" href="../css code/styles.CSS" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&family=Roboto&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <div class="filters">
+    <h1 class="filter-heading">You can apply filter too!</h1>
+
+    <div class="filters">
+      <label for="cpu">CPU:</label>
+      <select id="cpu">
+        <option value="">All</option>
+        <option value="i7-13700H">i7-13700H</option>
+        <option value="i9-13900H">i9-13900H</option>
+        <option value="i9-13900HX">i9-13900HX</option>
+        <option value="Ryzen 9 7945HX">Ryzen 9 7945HX</option>
+      </select>
+  
+      <label for="gpu">GPU:</label>
+      <select id="gpu">
+        <option value="">All</option>
+        <option value="RTX 4060">RTX 4060</option>
+        <option value="RTX 4070">RTX 4070</option>
+        <option value="RTX 4080">RTX 4080</option>
+        <option value="RTX 4090">RTX 4090</option>
+      </select>
+  
+      <label for="ram">RAM:</label>
+      <select id="ram">
+        <option value="">All</option>
+        <option value="16GB">16GB</option>
+        <option value="32GB">32GB</option>
+      </select>
+    </div>
+
+    <div class="reset-wrapper">
+      <button id="resetFilters">Reset Filters</button>
+    </div>
+
+  </div> <!-- end of .filters -->
+
+  
+  </div>
+    
+    <div class="container">
+     
+    </div>
+  
+    <script>
+      const cpuFilter = document.getElementById("cpu");
+      const gpuFilter = document.getElementById("gpu");
+      const ramFilter = document.getElementById("ram");
+      const laptops = document.querySelectorAll(".laptop-card");
+    
+      // Disable GPU and RAM initially
+      gpuFilter.disabled = true;
+      ramFilter.disabled = true;
+    
+      function filterLaptops() {
+        const selectedCPU = cpuFilter.value;
+        const selectedGPU = gpuFilter.value;
+        const selectedRAM = ramFilter.value;
+    
+        laptops.forEach(laptop => {
+          const cpuList = laptop.dataset.cpu?.split(" ") || [];
+          const gpuList = laptop.dataset.gpu?.split(" ") || [];
+          const ramList = laptop.dataset.ram?.split(" ") || [];
+    
+          const cpuMatch = !selectedCPU || cpuList.includes(selectedCPU);
+          const gpuMatch = !selectedGPU || gpuList.includes(selectedGPU);
+          const ramMatch = !selectedRAM || ramList.includes(selectedRAM);
+    
+          laptop.style.display = (cpuMatch && gpuMatch && ramMatch) ? "flex" : "none";
+        });
+      }
+    
+      // Step-by-step enabling logic
+      cpuFilter.addEventListener("change", () => {
+        if (cpuFilter.value) {
+          gpuFilter.disabled = false;
+        } else {
+          gpuFilter.disabled = true;
+          ramFilter.disabled = true;
+          gpuFilter.value = "";
+          ramFilter.value = "";
+        }
+        filterLaptops();
+      });
+    
+      gpuFilter.addEventListener("change", () => {
+        if (gpuFilter.value) {
+          ramFilter.disabled = false;
+        } else {
+          ramFilter.disabled = true;
+          ramFilter.value = "";
+        }
+        filterLaptops();
+      });
+    
+      ramFilter.addEventListener("change", filterLaptops);
+
+      document.getElementById("resetFilters").addEventListener("click", () => {
+    cpuFilter.value = "";
+    gpuFilter.value = "";
+    ramFilter.value = "";
+
+    gpuFilter.disabled = true;
+    ramFilter.disabled = true;
+
+    filterLaptops(); // Refresh the filtered list
+  });
+
+    </script>
+
+
+  <div class="container">
+
+    <article class="laptop-card">
+      <img src="images/tuf/1-image.png" alt="ASUS TUF Gaming A15">
+      <div class="details">
+        <h2>1. ASUS TUF Gaming A15 (2025)</h2>
+        <ul>
+          <li><strong>CPU:</strong> AMD Ryzen 7 7845HX / Ryzen 9 7945HX</li>
+          <li><strong>GPU:</strong> NVIDIA GeForce RTX 4050 / 4060 / 4070 / 4080</li>
+          <li><strong>RAM:</strong> 16GB / 32GB DDR5</li>
+          <li><strong>Storage:</strong> 512GB / 1TB SSD</li>
+          <li><strong>Display:</strong> 15.6", FHD, up to 240Hz</li>
+          <li><strong>Key Features:</strong> Military-grade build, RGB keyboard, strong cooling</li>
+          <li><strong>Best For:</strong> Mid-range gamers seeking performance & durability</li>
+        </ul>
+      </div>
+    </article>
+
+    <article class="laptop-card">
+      <img src="images/tuf/2-image.png" alt="ASUS TUF Gaming A17">
+      <div class="details">
+        <h2>2. ASUS TUF Gaming A17 (2025)</h2>
+        <ul>
+          <li><strong>CPU:</strong> AMD Ryzen 7 7845HX / Ryzen 9 7945HX</li>
+          <li><strong>GPU:</strong> NVIDIA GeForce RTX 4060 / 4070</li>
+          <li><strong>RAM:</strong> 16GB / 32GB DDR5</li>
+          <li><strong>Storage:</strong> 512GB / 1TB SSD</li>
+          <li><strong>Display:</strong> 17.3", FHD, up to 144Hz</li>
+          <li><strong>Key Features:</strong> Large screen, military-grade build, good battery life</li>
+          <li><strong>Best For:</strong> Gamers wanting immersive big-screen experiences</li>
+        </ul>
+      </div>
+    </article>
+
+    <article class="laptop-card">
+      <img src="images/tuf/3-image.png" alt="ASUS TUF Dash F15">
+      <div class="details">
+        <h2>3. ASUS TUF Dash F15 (2025)</h2>
+        <ul>
+          <li><strong>CPU:</strong> Intel Core i7-13700H / i9-13900H</li>
+          <li><strong>GPU:</strong> NVIDIA GeForce RTX 4060 / 4070 / 4080</li>
+          <li><strong>RAM:</strong> 16GB / 32GB DDR5</li>
+          <li><strong>Storage:</strong> 512GB / 1TB SSD</li>
+          <li><strong>Display:</strong> 15.6", FHD, up to 240Hz</li>
+          <li><strong>Key Features:</strong> Slim and portable, military-grade build</li>
+          <li><strong>Best For:</strong> Gamers needing power in a portable form</li>
+        </ul>
+      </div>
+    </article>
+
+    <article class="laptop-card">
+      <img src="images/tuf/4-image.png" alt="ASUS TUF Gaming F17">
+      <div class="details">
+        <h2>4. ASUS TUF Gaming F17 (2025)</h2>
+        <ul>
+          <li><strong>CPU:</strong> Intel Core i7-13700H / i9-13900H</li>
+          <li><strong>GPU:</strong> NVIDIA GeForce RTX 4060 / 4070</li>
+          <li><strong>RAM:</strong> 16GB / 32GB DDR5</li>
+          <li><strong>Storage:</strong> 512GB / 1TB SSD</li>
+          <li><strong>Display:</strong> 17.3", FHD, up to 144Hz</li>
+          <li><strong>Key Features:</strong> Durable chassis, great multitasking and cooling</li>
+          <li><strong>Best For:</strong> Work and play with a larger display</li>
+        </ul>
+      </div>
+    </article>
+
+    <article class="laptop-card">
+      <img src="images/tuf/5-image.png" alt="ASUS TUF Gaming A15 Intel">
+      <div class="details">
+        <h2>5. ASUS TUF Gaming A15 (Intel Version) (2025)</h2>
+        <ul>
+          <li><strong>CPU:</strong> Intel Core i5-13600H / i7-13700H</li>
+          <li><strong>GPU:</strong> NVIDIA GeForce RTX 4050 / 4060</li>
+          <li><strong>RAM:</strong> 16GB / 32GB DDR5</li>
+          <li><strong>Storage:</strong> 512GB / 1TB SSD</li>
+          <li><strong>Display:</strong> 15.6", FHD, 144Hz</li>
+          <li><strong>Key Features:</strong> Rugged and budget-friendly with solid specs</li>
+          <li><strong>Best For:</strong> Budget-conscious gamers needing reliability</li>
+        </ul>
+      </div>
+    </article>
+
+    <article class="laptop-card">
+      <img src="images/tuf/6-image.png" alt="ASUS TUF Gaming A15 (2024)">
+      <div class="details">
+        <h2>6. ASUS TUF Gaming A15 (2024)</h2>
+        <ul>
+          <li><strong>CPU:</strong> AMD Ryzen 5 7645HX / Ryzen 7 7845HX</li>
+          <li><strong>GPU:</strong> NVIDIA GeForce GTX 1650 / RTX 3060</li>
+          <li><strong>RAM:</strong> 8GB / 16GB DDR4</li>
+          <li><strong>Storage:</strong> 512GB SSD</li>
+          <li><strong>Display:</strong> 15.6", FHD, 144Hz</li>
+          <li><strong>Key Features:</strong> Budget-friendly, durable build</li>
+          <li><strong>Best For:</strong> Casual gamers at mid-tier pricing</li>
+        </ul>
+      </div>
+    </article>
+
+    <article class="laptop-card">
+      <img src="images/tuf/7-image.png" alt="ASUS TUF Gaming F15 (Intel)">
+      <div class="details">
+        <h2>7. ASUS TUF Gaming F15 (Intel Version) (2025)</h2>
+        <ul>
+          <li><strong>CPU:</strong> Intel Core i5-13600H / i7-13700H</li>
+          <li><strong>GPU:</strong> NVIDIA GeForce RTX 4060 / 4070</li>
+          <li><strong>RAM:</strong> 16GB / 32GB DDR5</li>
+          <li><strong>Storage:</strong> 512GB / 1TB SSD</li>
+          <li><strong>Display:</strong> 15.6", FHD, up to 240Hz</li>
+          <li><strong>Key Features:</strong> High refresh rate, tough chassis, solid cooling</li>
+          <li><strong>Best For:</strong> Competitive gamers needing fluid gameplay</li>
+        </ul>
+      </div>
+    </article>
+
+    <article class="laptop-card">
+      <img src="images/tuf/8-image.png" alt="ASUS TUF Gaming FX506">
+      <div class="details">
+        <h2>8. ASUS TUF Gaming FX506 (2025)</h2>
+        <ul>
+          <li><strong>CPU:</strong> Intel Core i7-12700H / i9-12900H</li>
+          <li><strong>GPU:</strong> NVIDIA GeForce GTX 1650 / RTX 3050</li>
+          <li><strong>RAM:</strong> 8GB / 16GB DDR4</li>
+          <li><strong>Storage:</strong> 512GB SSD</li>
+          <li><strong>Display:</strong> 15.6", FHD, up to 144Hz</li>
+          <li><strong>Key Features:</strong> Military-grade durability, entry-level gaming</li>
+          <li><strong>Best For:</strong> Affordable rugged performance</li>
+        </ul>
+      </div>
+    </article>
+
+  </div>
+</body>
+</html>

@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>HP Victus Lineup 2025</title>
+  <link rel="stylesheet" href="../css code/styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&family=Roboto&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <div class="filters">
+    <h1 class="filter-heading">You can apply filter too!</h1>
+
+    <div class="filters">
+      <label for="cpu">CPU:</label>
+      <select id="cpu">
+        <option value="">All</option>
+        <option value="i7-13700H">i7-13700H</option>
+        <option value="i9-13900H">i9-13900H</option>
+        <option value="i9-13900HX">i9-13900HX</option>
+        <option value="Ryzen 9 7945HX">Ryzen 9 7945HX</option>
+      </select>
+  
+      <label for="gpu">GPU:</label>
+      <select id="gpu">
+        <option value="">All</option>
+        <option value="RTX 4060">RTX 4060</option>
+        <option value="RTX 4070">RTX 4070</option>
+        <option value="RTX 4080">RTX 4080</option>
+        <option value="RTX 4090">RTX 4090</option>
+      </select>
+  
+      <label for="ram">RAM:</label>
+      <select id="ram">
+        <option value="">All</option>
+        <option value="16GB">16GB</option>
+        <option value="32GB">32GB</option>
+      </select>
+    </div>
+
+    <div class="reset-wrapper">
+      <button id="resetFilters">Reset Filters</button>
+    </div>
+
+  </div> <!-- end of .filters -->
+
+  
+  </div>
+    
+    <div class="container">
+     
+    </div>
+  
+    <script>
+      const cpuFilter = document.getElementById("cpu");
+      const gpuFilter = document.getElementById("gpu");
+      const ramFilter = document.getElementById("ram");
+      const laptops = document.querySelectorAll(".laptop-card");
+    
+      // Disable GPU and RAM initially
+      gpuFilter.disabled = true;
+      ramFilter.disabled = true;
+    
+      function filterLaptops() {
+        const selectedCPU = cpuFilter.value;
+        const selectedGPU = gpuFilter.value;
+        const selectedRAM = ramFilter.value;
+    
+        laptops.forEach(laptop => {
+          const cpuList = laptop.dataset.cpu?.split(" ") || [];
+          const gpuList = laptop.dataset.gpu?.split(" ") || [];
+          const ramList = laptop.dataset.ram?.split(" ") || [];
+    
+          const cpuMatch = !selectedCPU || cpuList.includes(selectedCPU);
+          const gpuMatch = !selectedGPU || gpuList.includes(selectedGPU);
+          const ramMatch = !selectedRAM || ramList.includes(selectedRAM);
+    
+          laptop.style.display = (cpuMatch && gpuMatch && ramMatch) ? "flex" : "none";
+        });
+      }
+    
+      // Step-by-step enabling logic
+      cpuFilter.addEventListener("change", () => {
+        if (cpuFilter.value) {
+          gpuFilter.disabled = false;
+        } else {
+          gpuFilter.disabled = true;
+          ramFilter.disabled = true;
+          gpuFilter.value = "";
+          ramFilter.value = "";
+        }
+        filterLaptops();
+      });
+    
+      gpuFilter.addEventListener("change", () => {
+        if (gpuFilter.value) {
+          ramFilter.disabled = false;
+        } else {
+          ramFilter.disabled = true;
+          ramFilter.value = "";
+        }
+        filterLaptops();
+      });
+    
+      ramFilter.addEventListener("change", filterLaptops);
+
+      document.getElementById("resetFilters").addEventListener("click", () => {
+    cpuFilter.value = "";
+    gpuFilter.value = "";
+    ramFilter.value = "";
+
+    gpuFilter.disabled = true;
+    ramFilter.disabled = true;
+
+    filterLaptops(); // Refresh the filtered list
+  });
+
+    </script>
+
+
+  <div class="container">
+
+    <article class="laptop-card">
+      <img src="images/victus/1-image.png" alt="HP Victus 15 (2025)">
+      <div class="details">
+        <h2>1. HP Victus 15 (2025)</h2>
+        <ul>
+          <li><strong>CPU:</strong> Intel Core i5-13600H / i7-13700H or AMD Ryzen 5 7645HX / Ryzen 7 7845HX</li>
+          <li><strong>GPU:</strong> NVIDIA RTX 4050 / 4060 or AMD Radeon RX 7600M XT</li>
+          <li><strong>RAM:</strong> 8GB / 16GB / 32GB DDR5</li>
+          <li><strong>Storage:</strong> 512GB / 1TB SSD</li>
+          <li><strong>Display:</strong> 15.6", FHD, up to 165Hz</li>
+          <li><strong>Key Features:</strong> Great performance, RGB keyboard, solid build</li>
+          <li><strong>Best For:</strong> Affordable gaming with balanced power</li>
+        </ul>
+      </div>
+    </article>
+
+    <article class="laptop-card">
+      <img src="images/victus/2-image.png" alt="HP Victus 16 (2025)">
+      <div class="details">
+        <h2>2. HP Victus 16 (2025)</h2>
+        <ul>
+          <li><strong>CPU:</strong> Intel Core i5-13600H / i7-13700H or AMD Ryzen 5 7645HX / Ryzen 7 7845HX</li>
+          <li><strong>GPU:</strong> NVIDIA RTX 4060 / 4070 or AMD Radeon RX 7600M XT</li>
+          <li><strong>RAM:</strong> 8GB / 16GB DDR5</li>
+          <li><strong>Storage:</strong> 512GB / 1TB SSD</li>
+          <li><strong>Display:</strong> 16.1", FHD, 144Hz</li>
+          <li><strong>Key Features:</strong> Large screen, strong thermals, powerful multitasking</li>
+          <li><strong>Best For:</strong> Gamers and creators on a budget</li>
+        </ul>
+      </div>
+    </article>
+
+    <article class="laptop-card">
+      <img src="images/victus/3-image.png" alt="HP Victus 15 (AMD Ryzen Version) (2024)">
+      <div class="details">
+        <h2>3. HP Victus 15 (AMD Ryzen) (2024)</h2>
+        <ul>
+          <li><strong>CPU:</strong> AMD Ryzen 5 7645HX / Ryzen 7 7845HX</li>
+          <li><strong>GPU:</strong> NVIDIA GTX 1650 / 1660 Ti or AMD Radeon RX 5600M</li>
+          <li><strong>RAM:</strong> 8GB / 16GB DDR4</li>
+          <li><strong>Storage:</strong> 512GB SSD</li>
+          <li><strong>Display:</strong> 15.6", FHD, 60Hz / 144Hz</li>
+          <li><strong>Key Features:</strong> Budget-friendly, good battery, reliable build</li>
+          <li><strong>Best For:</strong> Entry-level gamers looking for value</li>
+        </ul>
+      </div>
+    </article>
+
+    <article class="laptop-card">
+      <img src="images/victus/4-image.png" alt="HP Victus 17 (2025)">
+      <div class="details">
+        <h2>4. HP Victus 17 (2025)</h2>
+        <ul>
+          <li><strong>CPU:</strong> Intel Core i5-13600H / i7-13700H or AMD Ryzen 7 7845HX</li>
+          <li><strong>GPU:</strong> NVIDIA RTX 4060 / 4070 / 4080 or AMD RX 7600M XT</li>
+          <li><strong>RAM:</strong> 16GB / 32GB DDR5</li>
+          <li><strong>Storage:</strong> 512GB / 1TB SSD</li>
+          <li><strong>Display:</strong> 17.3", FHD, up to 144Hz</li>
+          <li><strong>Key Features:</strong> Immersive screen, improved thermals, great for multitasking</li>
+          <li><strong>Best For:</strong> Gamers who love big displays</li>
+        </ul>
+      </div>
+    </article>
+
+    <article class="laptop-card">
+      <img src="images/victus/5-image.png" alt="HP Victus 15 (Intel Version) (2025)">
+      <div class="details">
+        <h2>5. HP Victus 15 (Intel Version) (2025)</h2>
+        <ul>
+          <li><strong>CPU:</strong> Intel Core i5-13600H / i7-13700H</li>
+          <li><strong>GPU:</strong> GTX 1650 / 1660 Ti or RTX 4050 / 4060</li>
+          <li><strong>RAM:</strong> 8GB / 16GB / 32GB DDR5</li>
+          <li><strong>Storage:</strong> 512GB / 1TB SSD</li>
+          <li><strong>Display:</strong> 15.6", FHD, up to 144Hz</li>
+          <li><strong>Key Features:</strong> Good price-to-performance ratio, better cooling</li>
+          <li><strong>Best For:</strong> Mid-range gamers needing balance and portability</li>
+        </ul>
+      </div>
+    </article>
+
+    <article class="laptop-card">
+      <img src="images/victus/6-image.png" alt="HP Victus 16 (AMD Ryzen Version) (2025)">
+      <div class="details">
+        <h2>6. HP Victus 16 (AMD Ryzen) (2025)</h2>
+        <ul>
+          <li><strong>CPU:</strong> AMD Ryzen 5 7645HX / Ryzen 7 7845HX</li>
+          <li><strong>GPU:</strong> GTX 1650 / 1660 Ti or AMD Radeon RX 5600M</li>
+          <li><strong>RAM:</strong> 8GB / 16GB DDR4</li>
+          <li><strong>Storage:</strong> 512GB SSD</li>
+          <li><strong>Display:</strong> 16.1", FHD, up to 144Hz</li>
+          <li><strong>Key Features:</strong> Affordable, larger screen, reliable gaming</li>
+          <li><strong>Best For:</strong> Budget-conscious gamers who want a big display</li>
+        </ul>
+      </div>
+    </article>
+
+  </div>
+</body>
+</html>
